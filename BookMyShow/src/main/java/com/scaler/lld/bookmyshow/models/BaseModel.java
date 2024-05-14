@@ -15,8 +15,8 @@ import java.util.Date;
 @MappedSuperclass //this will propogate the attributes to all child classes
 public class BaseModel {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Id //For marking the field property as a primary key of the entity.
+    @GeneratedValue(strategy= GenerationType.IDENTITY) // instruct hibernate to automatically generate a unique value using some strategy
     private Long id;
     private Date createdAt;
     private Date lastModifiedAt;

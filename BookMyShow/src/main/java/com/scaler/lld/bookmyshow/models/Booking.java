@@ -1,8 +1,6 @@
 package com.scaler.lld.bookmyshow.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +16,11 @@ public  class Booking extends BaseModel{
     // 1 Booking -> 1 user, 1 user -> Many Bookings
     @ManyToOne
     private User user;
-    @OneToMany
+
+    @ManyToOne
+    private Show show;
+
+    @ManyToMany//depends on scenario
     private List<ShowSeat> showSeats;
 
     private int amount;
@@ -26,6 +28,7 @@ public  class Booking extends BaseModel{
     @OneToMany
     private List<Payment> payments;
 
+    @Enumerated(EnumType.ORDINAL) //store as a number/id instead of entire entire string
     private BookingStatus bookingStatus;
 
 }
